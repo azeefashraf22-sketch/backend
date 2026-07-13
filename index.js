@@ -18,20 +18,20 @@ app.listen(PORT, (req, res) => {
 
 
 
-const data = [{
-    name: "ali",
-    rollno: 10,
-    isActive: true
-},
-{
-    name: "ali 2",
-    rollno: 13,
-    isActive: false
-}, {
-    name: "ali 3",
-    rollno: 18,
-    isActive: true
-}]
+// const data = [{
+//     name: "ali",
+//     rollno: 10,
+//     isActive: true
+// },
+// {
+//     name: "ali 2",
+//     rollno: 13,
+//     isActive: false
+// }, {
+//     name: "ali 3",
+//     rollno: 18,
+//     isActive: true
+// }]
 
 // app.get("/data",(req,res)=>{
 //    res.send(data)
@@ -45,11 +45,17 @@ app.get("/data",(req,res)=>{
   
 })
 
-// const postData =[];
+const data = [];
+app.post("/postdata",(req,res)=>{
+   res.status(201).send({message:"data posted"})
+   data.push(req.body)
+})
+
+// const data =[];
 // app.post("/post-data",(req,res)=>{
 //    res.status(201).send({message:"data posted"})
-//     postData.push(req.body)
-//    console.log("post data => ",req.body);
+//     data.push(req.body)
+//    console.log("data => ",req.body);
 // })
 
 
