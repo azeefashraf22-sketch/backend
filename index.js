@@ -1,12 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import { connectDb } from './utils/db.js';
 
 dotenv.config()
 
 const app = express()
 app.use(express.json());
-app.use(morgan())
+app.use(morgan('dev'))
 
 app.get("/", (req, res) => {
     res.send("hello backend!")
@@ -50,6 +51,8 @@ app.post("/postdata",(req,res)=>{
    res.status(201).send({message:"data posted"})
    data.push(req.body)
 })
+
+connectDb()
 
 // const data =[];
 // app.post("/post-data",(req,res)=>{
