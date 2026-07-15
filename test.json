@@ -4,20 +4,20 @@
     "name": "Rahul Sharma",
     "email": "rahul@example.com",
     "role": "admin",
-    "status": "active"
-  },
+    "isActive": true
+    },
   {
     "id": 2,
     "name": "Sneha Gupta",
     "email": "sneha@example.com",
     "role": "user",
-    "status": "inactive"
+    "isActive": false
   },
   {
     "id": 3,
     "name": "Amit Kumar",
     "email": "amit@example.com",
     "role": "user",
-    "status": "active"
+    "isActive": true
   }
 ]

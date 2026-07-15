@@ -2,8 +2,10 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import { connectDb } from './utils/db.js';
+import dns from 'dns';
 
 dotenv.config()
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const app = express()
 app.use(express.json());
@@ -37,19 +39,19 @@ app.listen(PORT, (req, res) => {
 // app.get("/data",(req,res)=>{
 //    res.send(data)
 //    console.log(data);
-   
+
 // })
 
-app.get("/data",(req,res)=>{
-  res.send(data)
-  console.log(data);
-  
+app.get("/data", (req, res) => {
+    res.send(data)
+    console.log(data);
+
 })
 
 const data = [];
-app.post("/postdata",(req,res)=>{
-   res.status(201).send({message:"data posted"})
-   data.push(req.body)
+app.post("/postdata", (req, res) => {
+    res.status(201).send({ message: "data posted" })
+    data.push(req.body)
 })
 
 connectDb()
