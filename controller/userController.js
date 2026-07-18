@@ -1,24 +1,18 @@
 import { userService } from "../services/userService.js"
-import { User } from "../model/user.model.js"
 
 export const user = async (req, res) => {
     try {
-        // const { user, email, password } = req.body
-        if (!user || !email || !password) {
+        const { name, email, password } = req.body
+
+        if (!name || !email || !password) {
             return res.status(400).json({ message: "All fields are required!" })
         }
 
-        const user = await userService({
-            name,
-            email,
-            password
-        })
+        const newUser = await userService({ name, email, password })
 
-        res.status(201).json({ message: "User created successfully!", user })
-        console.log("User->", user);
-
+        res.status(201).json({ message: "User created successfully!", data: newUser })
 
     } catch (error) {
-        console.log(error.message);
+        res.status(500).json({ message: error.message })
     }
 }
